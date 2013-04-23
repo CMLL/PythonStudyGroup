@@ -25,9 +25,6 @@ def desafio1():
 		edades.append(str(int(año) - int(años[counter])))
 		print(nombres[counter] + "\t|" + años[counter] + "\t|" + edades[counter] + "\n")
 	
-
-	
-
 if __name__=="__main__":
 	desafio1()
 
