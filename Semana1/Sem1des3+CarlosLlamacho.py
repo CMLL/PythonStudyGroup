@@ -17,17 +17,10 @@ def desafio3():
         barras.append(int(input("Introduzca el tamaño de la barra " + str(item + 1) + ": ")))
 
     print("*" * 22)
+
     for i in range(maximo):
-    	print("ffuuuu")
+    	
     print("*" * 22)
-
-
-
-
-
-
-
-
 
 
 if __name__=="__main__":
