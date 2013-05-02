@@ -12,11 +12,11 @@ def binario(decimal):
 	
 	while decimal != 0:
 		resultado += str(decimal % 2)
-		decimal = decimal / 2 	
-	
+		decimal = decimal // 2
+		
 	return resultado
-	
-in __name__=="__main__":
+
+if __name__=="__main__":
 	decimal = int(input("Introduce un numero decimal: "))
 	
 	print(binario(decimal))
