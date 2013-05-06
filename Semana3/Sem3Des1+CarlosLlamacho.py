@@ -12,7 +12,16 @@ Escribe una función es_primo que tome un número x como entrada y devuelva el b
 #Carlos Llamacho
 
 def esprimo(numero):
-
+	
+	contador = 2
+	
+	resto = numero % contador
+	
+	resultado = True
+	
+	while contador < numero:
+		
+		
 
 
 if __name__=="__main__":
