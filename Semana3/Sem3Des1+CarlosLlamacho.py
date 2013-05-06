@@ -12,20 +12,29 @@ Escribe una función es_primo que tome un número x como entrada y devuelva el b
 #Carlos Llamacho
 
 def esprimo(numero):
-	
+	"""Recibe un numero positivo mayor que 2 y verifica si es primo o no, sin usar ifs."""
 	contador = 2
-	
-	resto = numero % contador
 	
 	resultado = True
 	
+	#Loop principal. Corre hasta que el contador sea numero - 1.
 	while contador < numero:
+		#Hace la division.
+		resto = numero % contador
 		
+		#Mientras la division no sea 0, se salta esta parte completamente.
+		while resto == 0:
+			#Si la division es 0, esto entrara en un loop infinito.
+			resultado = False
+			#por eso rompemos el loop con break
+			break
 		
+		contador += 1
+	return resultado
 
 
 if __name__=="__main__":
 	
 	numero = int(input("Introduce un numero positivo mayor a 2: "))
 	
-	esprimo(numero)
+	print(esprimo(numero))
