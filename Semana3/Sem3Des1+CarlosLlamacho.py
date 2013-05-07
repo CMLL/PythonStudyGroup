@@ -34,6 +34,7 @@ def esprimo(numero):
 
 def criba(numero):
 	
+	#List comprehension.
 	numeros = [num for num in range(2, numero + 1)]
 	
 	#Primer numero de la lista.
@@ -45,18 +46,18 @@ def criba(numero):
 	#Loop principal.
 	while primero < numero:
 		primos.append(primero)
-		#print("So far: " + str(primos))
 		
 		for item in numeros:
+			#Si es primo, lo saca del listado.
 			if item % primero == 0:
-				#print("Afuera: " + str(item))
 				numeros.remove(item)
+		#Este try se añadio porque llegaba al final de la lista, intentaba asignar y estaba vacia.
 		try:
 			numeros.remove(numeros[0])
 			primero = numeros[0]
 		except(IndexError) as error:
 			break
-		#print("Siguiente: " + str(primero))	
+			
 		
 	return primos
 		
