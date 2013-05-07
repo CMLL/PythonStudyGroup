@@ -32,9 +32,41 @@ def esprimo(numero):
 		contador += 1
 	return resultado
 
+def criba(numero):
+	
+	numeros = [num for num in range(2, numero + 1)]
+	
+	#Primer numero de la lista.
+	primero = numeros[0]
+	
+	#Listado de resultado.
+	primos = []
+	
+	#Loop principal.
+	while primero < numero:
+		primos.append(primero)
+		#print("So far: " + str(primos))
+		
+		for item in numeros:
+			if item % primero == 0:
+				#print("Afuera: " + str(item))
+				numeros.remove(item)
+		try:
+			numeros.remove(numeros[0])
+			primero = numeros[0]
+		except(IndexError) as error:
+			break
+		#print("Siguiente: " + str(primero))	
+		
+	return primos
+		
+			
+			
+					
+
 
 if __name__=="__main__":
 	
 	numero = int(input("Introduce un numero positivo mayor a 2: "))
 	
-	print(esprimo(numero))
+	print(criba(numero))

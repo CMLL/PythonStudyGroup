@@ -1,4 +1,4 @@
 PythonStudyGroup
 ================
 
-Repository for storing challenges of the PythonStudyGroup of G+.
+Repositorio para almacenar los ejercicios y desafios del grupo de estudio de Python G+.
