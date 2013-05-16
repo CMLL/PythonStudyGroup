@@ -37,42 +37,46 @@ def desglose(dinero):
     de2 = 0
     de1 = 0
     
+    original = dinero
+    
     while dinero != 0:
         
         if dinero % 500 != dinero:
-            dinero = dinero % 500
+            dinero = dinero - 500
             de500 +=1
         elif dinero % 200 != dinero:
-            dinero = dinero % 200
+            dinero = dinero - 200
             de200+=1
         elif dinero % 100 != dinero:
-            dinero = dinero % 100
+            dinero = dinero - 100
             de100 += 1
         elif dinero % 50 != dinero:
-            dinero = dinero % 50
+            dinero = dinero - 50
             de50+= 1
         elif dinero % 20 != dinero:
-            dinero = dinero % 20
+            dinero = dinero - 20
             de20 += 1
         elif dinero % 10 != dinero:
-            dinero = dinero % 10
+            dinero = dinero - 10
             de10 += 1
         elif dinero % 5 != dinero:
-            dinero = dinero % 5
+            dinero = dinero - 5
             de5+= 1
+        elif dinero == 1:
+            de1 += 1
+            dinero -=1
         elif dinero % 2 != dinero:
-            dinero = dinero % 2
+            dinero = dinero - 2
             de2 +=1
-        else:
-            de1 += dinero
             
-    print("{0} de 500, {1} de 200, {2} de 100, {3} de 50, {4} de 20, {5} de 10, {5} de 10, {6} de 5, {7} de 2, {8} de 1".format(de500, de200, de100, de50, de20, de10, de5, de2, de1))            
+    print("{0} de 500, {1} de 200, {2} de 100, {3} de 50, {4} de 20, {5} de 10, {5} de 10, {6} de 5, {7} de 2, {8} de 1 que suman {9}".format(de500, de200, de100, de50, de20, de10, de5, de2, de1, original))            
     
 if __name__=="__main__":
     desglose(426)
     desglose(232)
     desglose(132)
     desglose(345)
+    desglose(1132)
                 
         
             
