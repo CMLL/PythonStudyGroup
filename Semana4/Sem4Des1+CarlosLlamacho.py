@@ -10,15 +10,13 @@
 #Carlos Llamacho
 
 def sin_repetir(datos):
+	for item in datos:
+			if datos.count(item) > 1:
+				datos.remove(item)
+	return datos
 
-  for item in datos:
-    if datos.count(item) > 1:
-      datos.pop(item)
+if __name__=="__main__":
 
-  return datos
-
-if __name__="__main__":
-
-  print(sin_repetir([]))
-  print(sin_repetir([1,3,1,3]))
-  print(sin_repetir([1,3,5,6,6,5,3,1,9711])
+	print(sin_repetir([]))
+	print(sin_repetir([1,3,1,3]))
+	print(sin_repetir([1,3,5,6,6,5,3,1,9711]))
