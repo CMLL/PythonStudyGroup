@@ -6,7 +6,9 @@
 
 #Carlos Llamacho
 
-def binario(decimal):
+from sys import exit
+
+def conv_binario(decimal):
 	
 	resultado = ""
 	
@@ -21,7 +23,7 @@ def binario(decimal):
 	return resultado
 
 #Funcion que convierte de binario a decimal.
-def decimal(binario):
+def conv_decimal(binario):
     
     #Para fines de conversion virar el binario.
     binario = virar(binario)
@@ -58,7 +60,36 @@ def virar(binario):
     return binario_reves
 
 
-if __name__=="__main__":
-	binario = int(input("Introduce un numero binario: "))
-	
-	print(decimal(binario))
+def main():
+    """Funcion que nos muestra un menu para seleccionar que querremos convertir."""
+
+    print("Opciones: ")
+    print("-"*25)
+    print("1- De binario a decimal.")
+    print("2- De decimal a binario.")
+    print("3- Salir.\n")
+
+    opcion = int(input("Elija su opcion (1,2,3): "))
+    
+    while True:
+        if opcion in range(1, 4):
+            break
+        else:
+            opcion = int(input("Incorrecto, elija nuevamente: "))
+    
+    if opcion == 3:
+        exit()
+    elif opcion == 1:
+        binario = input("Introduce un # binario: ")
+        print("-"*25)
+        print("El numero binario {0} da el numero decimal {1}.".format(binario, conv_decimal(binario)))
+        print("-"*25)
+        main()
+    elif opcion == 2:
+        decimal = input("Introduce un # decimal: ")
+        print("-"*25)
+        print("El numero decimal {0} da el numero binario {1}.".format(decimal, conv_binario(decimal)))
+        print("-"*25)
+        main()
+    
+main()
