@@ -20,6 +20,8 @@ participantes y también corrigiendo datos. Generar informes permitiendo al
 usuario elegir qué columnas (Nombre, Apellido, etc.) quiere imprimir en pantalla.
 """
 
+import sys
+
 def menu(agenda):
 	
 	print("Menu: ")
@@ -38,6 +40,9 @@ def menu(agenda):
 		
 	if opcion == 1:
 		agregar(agenda)
+		menu()
+	elif opcion == 6:
+		sys.exit()
 
 def agregar(agenda):
 	
@@ -61,8 +66,6 @@ def agregar(agenda):
 			siguiente = False
 			
 	return agenda
-		
-		
 
 def main():
 	
