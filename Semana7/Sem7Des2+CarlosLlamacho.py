@@ -20,10 +20,12 @@ participantes y también corrigiendo datos. Generar informes permitiendo al
 usuario elegir qué columnas (Nombre, Apellido, etc.) quiere imprimir en pantalla.
 """
 
+from collections import OrderedDict
 import sys
 
 def menu(agenda):
 	
+	print("-"*25)
 	print("Menu: ")
 	print("-"*25)
 	print("1-Agregar datos.")
@@ -40,7 +42,10 @@ def menu(agenda):
 		
 	if opcion == 1:
 		agregar(agenda)
-		menu()
+		menu(agenda)
+	elif opcion == 2:
+		ver(agenda)
+		menu(agenda)
 	elif opcion == 6:
 		sys.exit()
 
@@ -59,14 +64,20 @@ def agregar(agenda):
 		localidad = str(input("Localidad: "))
 		print("-"*25)
 		
-		agenda.append({"nombre":nombre, "apellido":apellido,"edad":edad, "telefono":telefono, "email":email,"localidad":localidad})			
+		agenda.append(OrderedDict([("nombre", nombre), ("apellido",apellido),("edad",edad), ("telefono",telefono), ("email",email),("localidad",localidad)]))			
 		
 		seguir = str(input("Quiere ingregsar otra persona a la agenda(Y/N): "))
 		if seguir == "N" or seguir == "N".lower:
 			siguiente = False
 			
 	return agenda
-
+	
+def ver(agenda):	
+	for entrada in agenda:
+		print("#"*11)
+		for key in entrada:
+			print(str(key) + ": " + str(entrada.get(key)))
+		
 def main():
 	
 	#Inicializar la agenda.
