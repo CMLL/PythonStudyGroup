@@ -20,7 +20,7 @@ participantes y también corrigiendo datos. Generar informes permitiendo al
 usuario elegir qué columnas (Nombre, Apellido, etc.) quiere imprimir en pantalla.
 """
 
-def menu():
+def menu(agenda):
 	
 	print("Menu: ")
 	print("-"*25)
@@ -36,9 +36,41 @@ def menu():
 	while opcion not in range(1,7):
 		opcion = int(input("Su seleccion no es una opcion valida, intente nuevamente(1-6): "))
 		
+	if opcion == 1:
+		agregar(agenda)
+
+def agregar(agenda):
+	
+	siguiente = True
+	
+	while siguiente:
+		print("Datos a agregar al diccionario: ")
+		print("-"*25)
+		nombre = str(input("Nombre: "))
+		apellido = str(input("Apellido : "))
+		edad = int(input("Edad: "))
+		telefono = int(input("Telefono: "))
+		email = str(input("Email: "))
+		localidad = str(input("Localidad: "))
+		print("-"*25)
+		
+		agenda.append({"nombre":nombre, "apellido":apellido,"edad":edad, "telefono":telefono, "email":email,"localidad":localidad})			
+		
+		seguir = str(input("Quiere ingregsar otra persona a la agenda(Y/N): "))
+		if seguir == "N" or seguir == "N".lower:
+			siguiente = False
+			
+	return agenda
+		
+		
 
 def main():
-	menu()
+	
+	#Inicializar la agenda.
+	agenda = []
+	
+	#Cargar el menu usando la agenda creada.
+	menu(agenda)
 	
 if __name__=="__main__":
 	main()
