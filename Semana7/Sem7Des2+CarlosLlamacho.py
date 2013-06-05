@@ -25,6 +25,7 @@ import sys
 
 def menu(agenda):
 	
+	#Menu con las opciones. 1-6
 	print("-"*25)
 	print("Menu: ")
 	print("-"*25)
@@ -39,12 +40,17 @@ def menu(agenda):
 	
 	while opcion not in range(1,7):
 		opcion = int(input("Su seleccion no es una opcion valida, intente nuevamente(1-6): "))
-		
+	
+	#Funciones core de la agenda. Cada eleccion indicara el flujo.
+	#Exceptuando la funcion 6 que sale del programa, todas regresan al menu.	
 	if opcion == 1:
 		agregar(agenda)
 		menu(agenda)
 	elif opcion == 2:
 		ver(agenda)
+		menu(agenda)
+	elif opcion == 3:
+		eliminar(agenda)
 		menu(agenda)
 	elif opcion == 6:
 		sys.exit()
@@ -53,6 +59,7 @@ def agregar(agenda):
 	
 	siguiente = True
 	
+	#Loop que recoge datos hasta que se indique lo contrario.
 	while siguiente:
 		print("Datos a agregar al diccionario: ")
 		print("-"*25)
@@ -72,11 +79,28 @@ def agregar(agenda):
 			
 	return agenda
 	
-def ver(agenda):	
+def ver(agenda):
+	#Muestra todos los datos almacenados en la agenda.	
 	for entrada in agenda:
-		print("#"*11)
+		print("#"*50)
 		for key in entrada:
 			print(str(key) + ": " + str(entrada.get(key)))
+	
+
+def eliminar(agenda):
+	
+	print("Entradas en la agenda: ")
+	contador = 0
+	for entrada in agenda:
+		print(str(contador) + " - "+ str(entrada.get("nombre")) +" "+ str(entrada.get("apellido")))
+		contador +=1
+	print("*"*25)
+	eliminar = int(input("Seleccione la que quiera eliminar: "))
+	while eliminar not in range(0, len(agenda)+1):
+		eliminar = int(input("Seguro que eligio bien? Intente nuevamente: "))
+	agenda.pop(eliminar)
+	print("El dato fue eliminado.")	
+			
 		
 def main():
 	
