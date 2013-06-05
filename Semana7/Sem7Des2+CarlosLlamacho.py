@@ -52,6 +52,9 @@ def menu(agenda):
 	elif opcion == 3:
 		eliminar(agenda)
 		menu(agenda)
+	elif opcion == 4:
+		corregir(agenda)
+		menu(agenda)
 	elif opcion == 6:
 		sys.exit()
 
@@ -90,17 +93,38 @@ def ver(agenda):
 def eliminar(agenda):
 	
 	print("Entradas en la agenda: ")
-	contador = 0
+	#Muestra el indice junto con el nombre y el apellido de cada persona de la agenda.
 	for entrada in agenda:
-		print(str(contador) + " - "+ str(entrada.get("nombre")) +" "+ str(entrada.get("apellido")))
-		contador +=1
+		print(str(agenda.index(entrada)) + " - "+ str(entrada.get("nombre")) +" "+ str(entrada.get("apellido")))
 	print("*"*25)
+	#Se selecciona el indice que se desea borrar.
 	eliminar = int(input("Seleccione la que quiera eliminar: "))
+	#Se asegura que el indice este correcto.
 	while eliminar not in range(0, len(agenda)+1):
 		eliminar = int(input("Seguro que eligio bien? Intente nuevamente: "))
+	#Se saca ese diccionario del la agenda.
 	agenda.pop(eliminar)
 	print("El dato fue eliminado.")	
 			
+def corregir(agenda):
+	print("Entradas en la agenda: ")
+	for entrada in agenda:
+		print(str(agenda.index(entrada)) + " - "+ str(entrada.get("nombre")) + " "+ str(entrada.get("apellido")))
+	print("*"*25)
+	corregir = int(input("Seleccione la entrada que quiere corregir: "))
+	while corregir not in range(0, len(agenda)+1):
+		corregir = int(input("Seguro que eligio bien? Intentelo nuevamente: "))
+	print("*"*25)
+	print("Datos disponibles")
+	llaves = [x for x in agenda[corregir].keys()]
+	for llave in llaves:
+		print(str(llaves.index(llave))+" - "+str(llave))
+	eleccion = int(input("Que datos de la agenda quiere corregir: "))
+	while eleccion not in range(0, len(llaves)+1):
+		eleccion = int(input("Seguro que eligio bien? Intentelo nuevamente: "))
+	agenda[corregir][llaves[eleccion]] = input("Introduzcac la correccion deseada: ")
+	print("Dato corregido")
+
 		
 def main():
 	
